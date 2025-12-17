@@ -1,0 +1,53 @@
+stages:
+  - build
+  - style
+  - test
+  - deploy
+
+build-job:
+  stage: build
+  script:
+    - mkdir project
+    - cp src/* project
+    - cd project
+    - make all
+  artifacts:
+    paths:
+      - project
+    expire_in: 30 days
+
+code-style:
+  stage: style
+  script:
+    - cp materials/linters/.clang-format project
+    - cp src/* project
+    - cd project
+    - clang-format -n -Werror *.c
+  allow_failure: false
+
+integration-tests:
+  stage: test
+  script:
+    - cd project
+    - chmod +x integration_test.sh
+    - ./integration_test.sh
+  dependencies:
+    - build-job
+  needs:
+    - build-job
+    - code-style
+  allow_failure: false
+
+deploy-job:
+  stage: deploy
+  script:
+    - cd project
+    - chmod +x deploy.sh
+    - ./deploy.sh
+  dependencies:
+    - build-job
+  needs:
+    - build-job
+    - code-style
+    - integration-tests
+  allow_failure: false
