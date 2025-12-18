@@ -7,6 +7,6 @@
 
 - [DO1_Linux](DO1_Linux) — базовая работа с Linux: установка, администрирование, работа с файлами и правами доступа.
 - [DO2_LinuxNetwork](DO2_LinuxNetwork) — основы сетевых технологий: настройка интерфейсов, IP, DNS, маршрутизация.
-- [DO3_LinuxMonitoring](DO3_LinuxMonitoring) — мониторинг системных ресурсов Linux и автоматизация сбора данных.
+- [DO3_LinuxMonitoring_v1.0](DO3_LinuxMonitoring_v1.0) — мониторинг системных ресурсов Linux и автоматизация сбора данных.
 - [DO5_SimpleDocker](DO5_SimpleDocker) — работа с Docker: создание образов и запуск контейнеров.
 - [DO6_CICD](DO6_CICD) — настройка CI/CD пайплайнов, автоматизация сборки и деплоя.
